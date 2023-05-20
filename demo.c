@@ -17,7 +17,7 @@ void fetch(char *path, callback callback, void *state);
 IMPORT(resolve_promise)
 void resolve_promise(promise promise, void *result);
 
-extern unsigned char __heap_base;
+extern unsigned char __heap_base; // address of this variable is the start of memory that we can do what we want with
 
 EXPORT(malloc)
 void *malloc(size_t size)
@@ -41,7 +41,7 @@ void invoke_callback(callback callback, void *result, void *state)
 }
 
 /*
-demo, demo_continuation_1, and demo_continuation_2 are parts of what have been a single function that uses async, it might look something like this:
+demo, demo_continuation_1, and demo_continuation_2 are parts of what would have been a single function that uses async, it might look something like this:
 
 async int demo(void)
 {
