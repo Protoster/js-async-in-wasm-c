@@ -1,0 +1,1 @@
+clang demo.c -o demo.wasm --target=wasm32 -O3 -nostdlib -Wall -Wl,--no-entry
