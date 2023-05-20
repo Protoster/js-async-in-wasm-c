@@ -34,8 +34,8 @@ let imports =
     let response = await fetch(readCstr(path));
     let body = new Uint8Array(await response.arrayBuffer());
     let result = wasm.malloc(body.byteLength);
-    let u8s = new Uint8Array(wasm.memory.buffer, result, body.byteLength);
-    u8s.set(body);
+    let memory = new Uint8Array(wasm.memory.buffer, result, body.byteLength);
+    memory.set(body);
     wasm.invoke_callback(callback, result, state);
   }
 };
